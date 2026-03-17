@@ -6,7 +6,6 @@
 <title>Oye Khabbuu</title>
 
 <style>
-
 body{
     margin:0;
     height:100vh;
@@ -20,22 +19,15 @@ body{
 
 .container{
     text-align:center;
-}
-
-.banner{
-    background:#ff2e7a;
-    color:white;
-    padding:12px 25px;
-    border-radius:15px;
-    font-size:26px;
-    font-weight:bold;
-    margin-bottom:15px;
+    position: relative;
+    z-index: 2;
 }
 
 .name{
     font-size:36px;
     color:white;
     font-weight:bold;
+    margin-bottom:10px;
 }
 
 .question{
@@ -70,6 +62,35 @@ button{
     font-weight:bold;
 }
 
+/* IMAGE BOX */
+.image-box{
+    display:none;
+    position:relative;
+    margin-top:25px;
+    width:320px;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.image-box img{
+    width:100%;
+    border-radius:20px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.25);
+}
+
+/* TEXT OVER IMAGE */
+.image-text{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    color:white;
+    font-size:24px;
+    font-weight:bold;
+    text-shadow:2px 2px 8px rgba(0,0,0,0.8);
+    text-align:center;
+    width:90%;
+}
 </style>
 </head>
 
@@ -77,33 +98,35 @@ button{
 
 <div class="container">
 
+    <div class="name">Ammuu❤️</div>
+    <div class="question">Will you be my Constant❤️🌍🤞</div>
 
-<div class="name">Ammuu❤️</div>
+    <button class="yes" onclick="yesClick()">Yes🤩</button>
+    <button class="no" id="noBtn">No☹️</button>
 
-<div class="question">Will you be my Constant❤️🌍🤞</div>
+    <div class="result" id="result"></div>
 
-<button class="yes" onclick="yesClick()">Yes🤩</button>
-<button class="no" id="noBtn">No☹️</button>
-
-<div class="result" id="result"></div>
+    <!-- IMAGE WITH TEXT -->
+    <div class="image-box" id="imageBox">
+        <img src="ss56.png" alt="Love Image">
+        <div class="image-text">I Love You Amuuddi ❤️🌍🤞</div>
+    </div>
 
 </div>
+
 <!-- MUSIC -->
 <audio id="loveMusic">
     <source src="music.mp3" type="audio/mpeg">
 </audio>
 
 <script>
-
 let moveCount = 0;
 const noBtn = document.getElementById("noBtn");
 
 noBtn.addEventListener("mouseover", moveButton);
 
 function moveButton(){
-
     if(moveCount < 5){
-
         const bodyWidth = window.innerWidth;
         const bodyHeight = window.innerHeight;
 
@@ -115,29 +138,25 @@ function moveButton(){
         noBtn.style.top = randomY + "px";
 
         moveCount++;
-
-    }else{
-
+    } else {
         noBtn.onclick = function(){
             document.getElementById("result").innerHTML =
             "Single rehna hai kya Butaki😜";
         }
-
     }
 }
 
 function yesClick(){
-
     document.getElementById("result").innerHTML =
-     "Thank you so much, I love you Amuuddi🤩❤️";
+    "Thank you so much, I love you Amuuddi🤩❤️";
 
-    // PLAY MUSIC
+    // play music
     document.getElementById("loveMusic").play();
 
+    // show image
+    document.getElementById("imageBox").style.display = "block";
 }
-
 </script>
-
 
 </body>
 </html>
